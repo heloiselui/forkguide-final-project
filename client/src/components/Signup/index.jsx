@@ -2,6 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
+import eyeShow from "../../assets/eye-show.svg";
+import eyeHide from "../../assets/eye-hide.svg";
+import logo from "../../assets/logo.svg";
 
 const Signup = () => {
 	const [data, setData] = useState({
@@ -11,6 +14,7 @@ const Signup = () => {
 		password: "",
 	});
 	const [error, setError] = useState("");
+	const [showPassword, setShowPassword] = useState(false);
 	const navigate = useNavigate();
 
 	const handleChange = ({ currentTarget: input }) => {
@@ -35,19 +39,24 @@ const Signup = () => {
 		}
 	};
 
+	const togglePasswordVisibility = () => {
+		setShowPassword(!showPassword);
+	};
+
 	return (
 		<div className={styles.signup_container}>
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>
-					<h1>Welcome Back</h1>
+					<h1>Welcome Back! </h1>
 					<Link to="/login">
 						<button type="button" className={styles.white_btn}>
-							Sing in
+							Sign in
 						</button>
 					</Link>
 				</div>
 				<div className={styles.right}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
+						<img className={styles.logo} src={logo} alt="Logo" />
 						<h1>Create Account</h1>
 						<input
 							type="text"
@@ -76,18 +85,26 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
-						<input
-							type="password"
-							placeholder="Password"
-							name="password"
-							onChange={handleChange}
-							value={data.password}
-							required
-							className={styles.input}
-						/>
+						<div className={styles.password_container}>
+							<input
+								type={showPassword ? "text" : "password"}
+								placeholder="Password"
+								name="password"
+								onChange={handleChange}
+								value={data.password}
+								required
+								className={styles.input}
+							/>
+							<img
+								src={showPassword ? eyeHide : eyeShow}
+								alt="toggle password visibility"
+								onClick={togglePasswordVisibility}
+								className={styles.togglePassword}
+							/>
+						</div>
 						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
-							Sing Up
+						<button type="submit" className={styles.singup_btn}>
+							Sign up
 						</button>
 					</form>
 				</div>

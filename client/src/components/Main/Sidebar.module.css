@@ -1,0 +1,45 @@
+.sidebar {
+  background-color: var(--blue-700);
+  color: var(--white);
+  padding: 10px;
+  height: 100%;
+  position: fixed;
+  top: 91px;
+}
+
+.hamburger {
+  /* display: none; */
+  cursor: pointer;
+  color: var(--white);
+  padding-left: 5.625rem;
+
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav li {
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+/* @media (max-width: 420px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .hamburger {
+    display: block;
+  }
+} */

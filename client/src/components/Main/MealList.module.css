@@ -1,0 +1,79 @@
+.meal_list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.meal_list_nutrients {
+  margin-bottom: 20px;
+}
+
+.meal_list_nutrients h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.meal_list_nutrients ul {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+  border: 1px solid var(--gray-100);
+  border-radius: 10px;
+  background-color: var(--white);
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.meal_list_nutrients li {
+  margin: 0 10px;
+}
+
+.meal_list_meals {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  gap: 20px;
+}
+
+.meal_list_meal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--white);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.meal_list_meal img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.meal_list_meal h1 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.meal_list_meal ul {
+  list-style: none;
+  padding: 0;
+}
+
+.meal_list_meal li {
+  margin: 5px 0;
+}
+
+.meal_list_meal a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: var(--red-500);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 5px;
+}

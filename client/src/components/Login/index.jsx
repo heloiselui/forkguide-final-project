@@ -2,10 +2,14 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
+import eyeShow from "../../assets/eye-show.svg";
+import eyeHide from "../../assets/eye-hide.svg";
+import logo from "../../assets/logo.svg";
 
 const Login = () => {
 	const [data, setData] = useState({ email: "", password: "" });
 	const [error, setError] = useState("");
+	const [showPassword, setShowPassword] = useState(false);
 
 	const handleChange = ({ currentTarget: input }) => {
 		setData({ ...data, [input.name]: input.value });
@@ -29,12 +33,18 @@ const Login = () => {
 		}
 	};
 
+	const togglePasswordVisibility = () => {
+		setShowPassword(!showPassword);
+	};
+
 	return (
 		<div className={styles.login_container}>
 			<div className={styles.login_form_container}>
 				<div className={styles.left}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Login to Your Account</h1>
+						<img className={styles.logo} src={logo} alt="Logo" />
+						<h1>Login</h1>
+
 						<input
 							type="email"
 							placeholder="Email"
@@ -44,23 +54,31 @@ const Login = () => {
 							required
 							className={styles.input}
 						/>
-						<input
-							type="password"
-							placeholder="Password"
-							name="password"
-							onChange={handleChange}
-							value={data.password}
-							required
-							className={styles.input}
-						/>
+						<div className={styles.password_container}>
+							<input
+								type={showPassword ? "text" : "password"}
+								placeholder="Password"
+								name="password"
+								onChange={handleChange}
+								value={data.password}
+								required
+								className={styles.input}
+							/>
+							<img
+								src={showPassword ? eyeHide : eyeShow}
+								alt="toggle password visibility"
+								onClick={togglePasswordVisibility}
+								className={styles.togglePassword}
+							/>
+						</div>
 						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
-							Sing In
+						<button type="submit" className={styles.login_btn}>
+							Login
 						</button>
 					</form>
 				</div>
 				<div className={styles.right}>
-					<h1>New Here ?</h1>
+					<h1>New to ForkGuide?</h1>
 					<Link to="/signup">
 						<button type="button" className={styles.white_btn}>
 							Sing Up
