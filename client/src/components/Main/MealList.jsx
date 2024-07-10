@@ -2,7 +2,7 @@ import React from "react";
 import Meal from "./Meal";
 import styles from "./MealList.module.css";
 
-export default function MealList({ mealData }) {
+function MealList({ mealData }) {
   const nutrients = mealData.nutrients;
 
   return (
@@ -29,3 +29,5 @@ export default function MealList({ mealData }) {
     </main>
   );
 }
+
+export default MealList;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function Meal({ meal }) {
+function Meal({ meal }) {
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
@@ -29,3 +29,5 @@ export default function Meal({ meal }) {
     </article>
   );
 }
+
+export default Meal;

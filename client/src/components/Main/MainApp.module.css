@@ -1,6 +1,11 @@
 .wrapper {
 	display: grid;
 	grid-template-columns: 165px 1fr;
+	min-height: 100vh;
+}
+
+.wrapper main {
+	flex: 1;
 }
 
 .controls {
@@ -11,7 +16,7 @@
 }
 
 .controls input {
-	width: 12.5rem;
+	width: 200px;
 	padding: 0.625rem;
 	margin-right: 0.625rem;
 	border-radius: 0.3125rem;

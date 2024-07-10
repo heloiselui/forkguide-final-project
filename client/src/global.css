@@ -10,6 +10,7 @@
   --black: #000000;
 
   --blue-500: #00538F;
+  --blue-600: #4d657e;
   --blue-700: #2D3E50;
 
   --red-500: #F34646;
@@ -22,9 +23,7 @@
   box-sizing: border-box;
 }
 
-
 body {
-  /* font-family: "Roboto", sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: url('./assets/background-image.png') no-repeat center center fixed;

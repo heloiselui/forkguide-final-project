@@ -51,11 +51,8 @@ function MainApp() {
 					</section>
 					{mealData && <MealList mealData={mealData} />}
 				</main>
-
 			</div>
-
 		</div>
-
 	);
 }
 

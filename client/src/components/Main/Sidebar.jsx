@@ -1,31 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Sidebar.module.css';
-
-import hamburgerMenu from "../../assets/hamburger-menu.svg";
+import * as Icon from "phosphor-react";
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
-      <div className={styles.hamburger} onClick={toggleSidebar}>
-        <img className={styles.hamburgerMenu} src={hamburgerMenu} alt="Menu Hamburger" />
-      </div>
-      <nav className={styles.nav}>
-        <ul>
-          <li>Planner</li>
-          <li>Shopping List</li>
-          <li>Recipes</li>
-          <li>Library</li>
-          <li>Account Settings</li>
-        </ul>
-      </nav>
-    </aside>
-
+    <nav className={styles.sidebarNav}>
+      <ul>
+        <li id={styles.menu}>
+          <Icon.ArrowCircleLeft size={32} />
+          Menu
+        </li>
+        <li>
+          <Icon.Calendar size={21} />
+          <a href='#'>Planner</a>
+        </li>
+        <li>
+          <Icon.ShoppingCart size={21} />
+          <a href='#'>Shopping List</a>
+        </li>
+        <li>
+          <Icon.MagnifyingGlass size={21} />
+          <a href='#'>Recipes Library</a>
+        </li>
+        <li id={styles.account}>
+          <Icon.GearSix size={21} />
+          <a href='#'>Account Settings</a>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
