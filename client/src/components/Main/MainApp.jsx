@@ -32,11 +32,15 @@ function MainApp() {
 	};
 
 	return (
-		<div className={styles.app}>
+
+		<div>
 			<Header onLogout={handleLogout} />
-			<div className={styles.main_content}>
-				<Sidebar />
-				<div className={styles.content}>
+
+			<div className={styles.wrapper}>
+				<aside>
+					<Sidebar />
+				</aside>
+				<main>
 					<section className={styles.controls}>
 						<input
 							type="number"
@@ -46,9 +50,12 @@ function MainApp() {
 						<button onClick={getMealData}>Get Daily Meal Plan</button>
 					</section>
 					{mealData && <MealList mealData={mealData} />}
-				</div>
+				</main>
+
 			</div>
+
 		</div>
+
 	);
 }
 

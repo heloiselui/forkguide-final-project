@@ -24,16 +24,18 @@
 
 
 body {
-
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: url('./assets/background-image.png') no-repeat center center fixed;
   background-size: cover;
 }
 
-#root {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
+body,
+input,
+textarea,
+button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
 }
