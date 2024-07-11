@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import MealList from "./MealList";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
+import NutritionChatBot from "./ChatBot";
 import styles from "./MainApp.module.css";
 
 function MainApp() {
 	const [mealData, setMealData] = useState(null);
 	const [calories, setCalories] = useState(2000);
-
 
 	const getMealData = () => {
 		fetch(
@@ -32,7 +32,6 @@ function MainApp() {
 	};
 
 	return (
-
 		<div>
 			<Header onLogout={handleLogout} />
 
@@ -52,6 +51,8 @@ function MainApp() {
 					{mealData && <MealList mealData={mealData} />}
 				</main>
 			</div>
+
+			<NutritionChatBot />
 		</div>
 	);
 }
