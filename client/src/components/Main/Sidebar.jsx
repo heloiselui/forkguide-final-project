@@ -1,30 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Sidebar.module.css';
 import * as Icon from "phosphor-react";
 
-const Sidebar = () => {
+const Sidebar = ({ onToggle }) => {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsCollapsed(!isCollapsed);
+    if (onToggle) onToggle();
+  };
+
   return (
-    <nav className={styles.sidebarNav}>
+    <nav className={`${styles.sidebarNav} ${styles.isCollapsed ? styles.collapsed : ''}`}>
       <ul>
-        <li id={styles.menu}>
-          <Icon.ArrowCircleLeft size={32} />
-          Menu
+        <li id={styles.menu} onClick={toggleSidebar}>
+          {isCollapsed ? <Icon.ArrowCircleRight size={32} /> : <Icon.ArrowCircleLeft size={32} />}
+          {!isCollapsed && "Menu"}
         </li>
         <li>
-          <Icon.Calendar size={21} />
-          <a href='#'>Planner</a>
+          <Icon.Calendar size={30} />
+          {!isCollapsed && <a href='#'>Planner</a>}
         </li>
         <li>
-          <Icon.ShoppingCart size={21} />
-          <a href='#'>Shopping List</a>
+          <Icon.ShoppingCart size={30} />
+          {!isCollapsed && <a href='#'>Shopping List</a>}
         </li>
         <li>
-          <Icon.MagnifyingGlass size={21} />
-          <a href='#'>Recipes Library</a>
+          <Icon.MagnifyingGlass size={30} />
+          {!isCollapsed && <a href='#'>Recipes Library</a>}
         </li>
         <li id={styles.account}>
-          <Icon.GearSix size={21} />
-          <a href='#'>Account Settings</a>
+          <Icon.GearSix size={30} />
+          {!isCollapsed && <a href='#'>Account Settings</a>}
         </li>
       </ul>
     </nav>

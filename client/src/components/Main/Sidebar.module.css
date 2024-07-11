@@ -5,6 +5,7 @@
   height: 100%;
   position: fixed;
   top: 6.063rem;
+  transition: width 0.3s ease;
 }
 
 .sidebarNav ul {
@@ -27,17 +28,16 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-
 }
 
 .sidebarNav li svg {
   margin-right: 0.625rem;
+  transition: transform 0.3s ease;
 }
 
 #account {
   margin-top: 30rem;
 }
-
 
 .sidebarNav li:hover {
   background-color: var(--blue-600);
