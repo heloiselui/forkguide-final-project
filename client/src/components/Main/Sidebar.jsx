@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './Sidebar.module.css';
 import * as Icon from "phosphor-react";
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({ onToggle }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -18,20 +19,28 @@ const Sidebar = ({ onToggle }) => {
           {!isCollapsed && "Menu"}
         </li>
         <li className={styles.navItem}>
-          <Icon.Calendar size={30} className={isCollapsed ? styles.iconCollapsed : ''} />
-          {!isCollapsed && <a href='#'>Planner</a>}
+          <Link to="/" className={styles.navLink}>
+            <Icon.Calendar size={30} />
+            {!isCollapsed && <span>Planner</span>}
+          </Link>
         </li>
         <li className={styles.navItem}>
-          <Icon.ShoppingCart size={30} className={isCollapsed ? styles.iconCollapsed : ''} />
-          {!isCollapsed && <a href='#'>Shopping List</a>}
+          <Link to="/shopping-list" className={styles.navLink}>
+            <Icon.ShoppingCart size={30} />
+            {!isCollapsed && <span>Shopping List</span>}
+          </Link>
         </li>
         <li className={styles.navItem}>
-          <Icon.MagnifyingGlass size={30} className={isCollapsed ? styles.iconCollapsed : ''} />
-          {!isCollapsed && <a href='#'>Recipes Library</a>}
+          <Link to="/recipes-library" className={styles.navLink}>
+            <Icon.MagnifyingGlass size={30} />
+            {!isCollapsed && <span>Recipes Library</span>}
+          </Link>
         </li>
         <li id={styles.account} className={styles.navItem}>
-          <Icon.GearSix size={30} className={isCollapsed ? styles.iconCollapsed : ''} />
-          {!isCollapsed && <a href='#'>Account Settings</a>}
+          <Link to="/account-settings" className={styles.navLink}>
+            <Icon.GearSix size={30} className={isCollapsed ? styles.iconCollapsed : ''} />
+            {!isCollapsed && <span>Account Settings</span>}
+          </Link>
         </li>
       </ul>
     </nav>

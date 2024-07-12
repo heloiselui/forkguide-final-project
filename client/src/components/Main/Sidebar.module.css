@@ -41,14 +41,6 @@
   transition: background-color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;
 }
 
-.ulCollapsed {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 89%;
-}
-
 .navItem {
   width: 100%;
   text-align: center;
