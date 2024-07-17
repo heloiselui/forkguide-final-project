@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import Header from '../../Header';
 import Sidebar from '../../Sidebar';
 import axios from 'axios';
-import styles from './RecipesLibrary.module.css';
 import NutritionChatBot from "../../ChatBot";
+
+import styles from './RecipesLibrary.module.css';
 
 const RecipesLibrary = () => {
   const [query, setQuery] = useState('');
@@ -45,9 +46,14 @@ const RecipesLibrary = () => {
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = '/login';
+  };
+
   return (
     <div className={styles.recipes_library}>
-      <Header />
+      <Header onLogout={handleLogout} />
       <div className={styles.main_content}>
         <Sidebar />
         <div className={styles.content}>
@@ -63,6 +69,8 @@ const RecipesLibrary = () => {
                 className={styles.search_input}
               />
               <button type="submit" className={styles.search_button}>Search by Recipe</button>
+
+              <p> or </p>
             </form>
 
             <form onSubmit={handleSearchByIngredient} className={styles.search_form}>

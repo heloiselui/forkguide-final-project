@@ -3,6 +3,7 @@ import MealList from "./MealList";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import NutritionChatBot from "./ChatBot";
+
 import styles from "./MainApp.module.css";
 
 function MainApp() {
@@ -40,6 +41,7 @@ function MainApp() {
 					<Sidebar />
 				</aside>
 				<main>
+					<h1>Planner</h1>
 					<section className={styles.controls}>
 						<input
 							type="number"

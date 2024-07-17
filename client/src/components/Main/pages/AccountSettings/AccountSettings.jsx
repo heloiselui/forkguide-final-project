@@ -16,10 +16,6 @@ const AccountSettings = () => {
       <div className="main-content">
         <Sidebar />
         <div className="content">
-          {/* Conteúdo */}
-          <h1>Account Settings</h1>
-          <p>Bem-vindo se seu perfil</p>
-          {/* Conteúdo */}
         </div>
       </div>
       <NutritionChatBot />

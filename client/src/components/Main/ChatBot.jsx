@@ -26,8 +26,6 @@ const steps = [
     options: [
       { value: 'calories', label: 'Calculate daily calories', trigger: 'calories' },
       { value: 'water', label: 'Recommend water intake', trigger: 'water' },
-      { value: 'food', label: 'Information about a food', trigger: 'food' },
-      { value: 'recipe', label: 'Recipe suggestions', trigger: 'recipe' },
     ],
   },
   {
@@ -137,46 +135,6 @@ const steps = [
       const intake = weight * 0.033;
       return `You should drink about ${intake.toFixed(2)} litres of water a day.`;
     },
-    trigger: 'endOrCancel',
-  },
-  {
-    id: 'food',
-    message: 'Please enter the name of the food:',
-    trigger: 'foodName',
-  },
-  {
-    id: 'foodName',
-    user: true,
-    trigger: 'fetchFoodInfo',
-  },
-  {
-    id: 'fetchFoodInfo',
-    message: 'Looking for information...',
-    trigger: 'showFoodInfo',
-  },
-  {
-    id: 'showFoodInfo',
-    message: "Here's some information about the food: [substituir com informações reais]",
-    trigger: 'endOrCancel',
-  },
-  {
-    id: 'recipe',
-    message: 'Please insert the main ingredient:',
-    trigger: 'ingredient',
-  },
-  {
-    id: 'ingredient',
-    user: true,
-    trigger: 'fetchRecipes',
-  },
-  {
-    id: 'fetchRecipes',
-    message: 'Looking for recipes...',
-    trigger: 'showRecipes',
-  },
-  {
-    id: 'showRecipes',
-    message: 'Here are a few recipes:  [substituir com receitas reais]',
     trigger: 'endOrCancel',
   },
   {
