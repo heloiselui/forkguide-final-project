@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .meal_list_nutrients {
@@ -12,6 +12,7 @@
 .meal_list_nutrients h1 {
   text-align: center;
   margin-bottom: 20px;
+  margin-top: 0;
 }
 
 .meal_list_nutrients ul {
@@ -90,8 +91,8 @@
   }
 
   .meal_list_meal {
-    width: 80%;
-    max-width: 80%;
+    width: 60%;
+    max-width: 60%;
   }
 
   .meal_list_meal img {

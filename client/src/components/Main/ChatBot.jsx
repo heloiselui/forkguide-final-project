@@ -101,14 +101,14 @@ const steps = [
       const age = parseInt(steps.userAge.value, 10);
       const gender = steps.userGender.value;
 
-      let bmr;
+      let bmi;
       if (gender === 'male') {
-        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+        bmi = 10 * weight + 6.25 * height - 5 * age + 5;
       } else {
-        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+        bmi = 10 * weight + 6.25 * height - 5 * age - 161;
       }
 
-      return `Your recommended daily calories are: ${bmr.toFixed(2)} kcal`;
+      return `Your recommended daily calories are: ${bmi.toFixed(2)} kcal`;
     },
     trigger: 'endOrCancel',
   },
