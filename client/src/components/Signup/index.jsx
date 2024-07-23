@@ -12,6 +12,10 @@ const Signup = () => {
 		lastName: "",
 		email: "",
 		password: "",
+		height: "",
+		weight: "",
+		age: "",
+		gender: "",
 	});
 	const [error, setError] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
@@ -29,11 +33,7 @@ const Signup = () => {
 			navigate("/login");
 			console.log(res.message);
 		} catch (error) {
-			if (
-				error.response &&
-				error.response.status >= 400 &&
-				error.response.status <= 500
-			) {
+			if (error.response && error.response.status >= 400 && error.response.status <= 500) {
 				setError(error.response.data.message);
 			}
 		}
@@ -102,6 +102,46 @@ const Signup = () => {
 								className={styles.togglePassword}
 							/>
 						</div>
+						<input
+							type="number"
+							placeholder="Height (cm)"
+							name="height"
+							onChange={handleChange}
+							value={data.height}
+							required
+							className={styles.input}
+						/>
+						<input
+							type="number"
+							placeholder="Weight (kg)"
+							name="weight"
+							onChange={handleChange}
+							value={data.weight}
+							required
+							className={styles.input}
+						/>
+						<input
+							type="number"
+							placeholder="Age"
+							name="age"
+							onChange={handleChange}
+							value={data.age}
+							required
+							className={styles.input}
+						/>
+						<select
+							name="gender"
+							onChange={handleChange}
+							value={data.gender}
+							required
+							className={styles.input}
+						>
+							<option value="" disabled>
+								Select Gender
+							</option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+						</select>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.singup_btn}>
 							Sign up

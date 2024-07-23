@@ -10,7 +10,7 @@
 
 .signup_form_container {
 	width: 900px;
-	height: 500px;
+	height: 700px;
 	display: flex;
 	border-radius: 10px;
 	box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
@@ -133,10 +133,6 @@
 		padding: 1.25rem;
 	}
 
-	.input,
-	.error_msg {
-		width: 100%;
-	}
 
 	.white_btn,
 	.singup_btn {

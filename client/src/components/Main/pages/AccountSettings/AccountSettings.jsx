@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Header from '../../Header';
-import Sidebar from '../../Sidebar';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Header from "../../Header";
+import Sidebar from "../../Sidebar";
+import styles from "./AccountSettings.module.css";
 import NutritionChatBot from "../../ChatBot";
-import styles from './AccountSettings.module.css';
-
 
 const AccountSettings = () => {
   const [data, setData] = useState({
-    firstName: '',
-    lastName: '',
-    email: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    height: "",
+    weight: "",
+    age: "",
+    gender: "",
+    password: "",
+    newPassword: ""
   });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   useEffect(() => {
-    // Aqui você pode buscar os dados do usuário e preencher o estado
-    const fetchData = async () => {
+    const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:8080/api/users/me', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
+        const token = localStorage.getItem("token");
+        const { data } = await axios.get("http://localhost:8080/api/users/me", {
+          headers: { Authorization: `Bearer ${token}` },
         });
-        setData(response.data);
+        setData({ ...data, password: "", newPassword: "" });
       } catch (error) {
-        setError('Failed to fetch user data');
+        console.error("Error fetching user data:", error);
       }
     };
 
-    fetchData();
+    fetchUserData();
   }, []);
 
   const handleChange = ({ currentTarget: input }) => {
@@ -41,21 +43,33 @@ const AccountSettings = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem('token');
-      await axios.put('http://localhost:8080/api/users/me', data, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
+      const token = localStorage.getItem("token");
+      const { data: res } = await axios.put("http://localhost:8080/api/users/me", data, {
+        headers: { Authorization: `Bearer ${token}` },
       });
-      setSuccess('Account updated successfully');
+      setSuccess(res.message);
+      setError("");
     } catch (error) {
-      setError('Failed to update account');
+      if (
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status <= 500
+      ) {
+        setError(error.response.data.message);
+        setSuccess("");
+      }
     }
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.href = '/login';
+  };
+
+
   return (
     <div className={styles.account_settings}>
-      <Header />
+      <Header onLogout={handleLogout} />
       <div className={styles.main_content}>
         <Sidebar />
         <div className={styles.content}>
@@ -85,16 +99,68 @@ const AccountSettings = () => {
               name="email"
               onChange={handleChange}
               value={data.email}
-              required
+              disabled
+              className={styles.input}
+            />
+            <input
+              type="number"
+              placeholder="Height (cm)"
+              name="height"
+              onChange={handleChange}
+              value={data.height}
+              className={styles.input}
+            />
+            <input
+              type="number"
+              placeholder="Weight (kg)"
+              name="weight"
+              onChange={handleChange}
+              value={data.weight}
+              className={styles.input}
+            />
+            <input
+              type="number"
+              placeholder="Age"
+              name="age"
+              onChange={handleChange}
+              value={data.age}
+              className={styles.input}
+            />
+            <select
+              name="gender"
+              onChange={handleChange}
+              value={data.gender}
+              className={styles.input}
+            >
+              <option value="">Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <input
+              type="password"
+              placeholder="Current Password"
+              name="password"
+              onChange={handleChange}
+              value={data.password}
+              className={styles.input}
+            />
+            <input
+              type="password"
+              placeholder="New Password"
+              name="newPassword"
+              onChange={handleChange}
+              value={data.newPassword}
               className={styles.input}
             />
             {error && <div className={styles.error_msg}>{error}</div>}
             {success && <div className={styles.success_msg}>{success}</div>}
-            <button type="submit" className={styles.save_btn}>Save</button>
+            <button type="submit" className={styles.save_btn}>
+              Save
+            </button>
           </form>
-          <NutritionChatBot />
         </div>
       </div>
+      <NutritionChatBot />
     </div>
   );
 };
