@@ -29,8 +29,9 @@
 .left h1 {
 	margin-top: 0;
 	color: var(--white);
-	font-size: 35px;
+	font-size: 2.5rem;
 	align-self: center;
+	margin-bottom: 1rem;
 }
 
 .right {
@@ -50,7 +51,7 @@
 
 .form_container h1 {
 	color: var(--gray-700);
-	font-size: 40px;
+	font-size: 2.5rem;
 	margin-top: 0;
 }
 
@@ -58,18 +59,18 @@
 	outline: none;
 	border: none;
 	width: 370px;
-	padding: 15px;
+	padding: 0.938rem;
 	border-radius: 10px;
 	background-color: var(--gray-100);
-	margin: 5px 0;
-	font-size: 14px;
+	margin: 0.312rem 0;
+	font-size: 0.875rem;
 }
 
 .error_msg {
 	width: 370px;
-	padding: 10px;
-	margin: 5px 0;
-	font-size: 14px;
+	padding: 0.625rem;
+	margin: 0.312rem 0;
+	font-size: 0.875rem;
 	background-color: var(--red-500);
 	color: var(--white);
 	border-radius: 5px;
@@ -80,19 +81,19 @@
 .singup_btn {
 	border: none;
 	outline: none;
-	padding: 12px 0;
+	padding: 0.75rem 0;
 	background-color: var(--white);
 	border-radius: 20px;
 	width: 180px;
 	font-weight: bold;
-	font-size: 14px;
+	font-size: 0.875rem;
 	cursor: pointer;
 }
 
 .singup_btn {
 	background-color: var(--blue-700);
 	color: var(--white);
-	margin: 5px;
+	margin: 0.313rem;
 }
 
 .password_container {
@@ -101,17 +102,17 @@
 
 .togglePassword {
 	position: absolute;
-	right: 15px;
+	right: 0.938rem;
 	top: 50%;
 	transform: translateY(-50%);
 	cursor: pointer;
-	width: 20px;
-	height: 20px;
+	width: 1.25rem;
+	height: 1.25rem;
 }
 
 .logo {
-	margin-top: 20px;
-	margin-bottom: 15px;
+	margin-top: 1.25rem;
+	margin-bottom: 0.938rem;
 }
 
 @media (max-width: 768px) {

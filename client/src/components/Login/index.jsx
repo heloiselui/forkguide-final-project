@@ -2,8 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import eyeShow from "../../assets/eye-show.svg";
-import eyeHide from "../../assets/eye-hide.svg";
+import { Eye, EyeSlash } from "phosphor-react";
 import logo from "../../assets/logo.svg";
 
 const Login = () => {
@@ -64,12 +63,11 @@ const Login = () => {
 								required
 								className={styles.input}
 							/>
-							<img
-								src={showPassword ? eyeHide : eyeShow}
-								alt="toggle password visibility"
-								onClick={togglePasswordVisibility}
-								className={styles.togglePassword}
-							/>
+							{showPassword ? (
+								<EyeSlash onClick={togglePasswordVisibility} className={styles.togglePassword} />
+							) : (
+								<Eye onClick={togglePasswordVisibility} className={styles.togglePassword} />
+							)}
 						</div>
 						{error && <div className={styles.error_msg}>{error}</div>}
 						<button type="submit" className={styles.login_btn}>
@@ -81,7 +79,7 @@ const Login = () => {
 					<h1>New to ForkGuide?</h1>
 					<Link to="/signup">
 						<button type="button" className={styles.white_btn}>
-							Sing Up
+							Sign Up
 						</button>
 					</Link>
 				</div>

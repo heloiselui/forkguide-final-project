@@ -3,6 +3,7 @@ import axios from "axios";
 import Header from "../../Header";
 import Sidebar from "../../Sidebar";
 import styles from "./AccountSettings.module.css";
+import { Eye, EyeSlash } from "phosphor-react";
 import NutritionChatBot from "../../ChatBot";
 
 const AccountSettings = () => {
@@ -19,6 +20,7 @@ const AccountSettings = () => {
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [showPassword, setShowPassword] = useState({ password: false, newPassword: false });
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -61,11 +63,17 @@ const AccountSettings = () => {
     }
   };
 
+  const togglePasswordVisibility = (field) => {
+    setShowPassword((prevState) => ({
+      ...prevState,
+      [field]: !prevState[field]
+    }));
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     window.location.href = '/login';
   };
-
 
   return (
     <div className={styles.account_settings}>
@@ -136,22 +144,36 @@ const AccountSettings = () => {
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
-            <input
-              type="password"
-              placeholder="Current Password"
-              name="password"
-              onChange={handleChange}
-              value={data.password}
-              className={styles.input}
-            />
-            <input
-              type="password"
-              placeholder="New Password"
-              name="newPassword"
-              onChange={handleChange}
-              value={data.newPassword}
-              className={styles.input}
-            />
+            <div className={styles.password_container}>
+              <input
+                type={showPassword.password ? "text" : "password"}
+                placeholder="Current Password"
+                name="password"
+                onChange={handleChange}
+                value={data.password}
+                className={styles.password_input}
+              />
+              {showPassword.password ? (
+                <EyeSlash onClick={() => togglePasswordVisibility('password')} className={styles.togglePassword} />
+              ) : (
+                <Eye onClick={() => togglePasswordVisibility('password')} className={styles.togglePassword} />
+              )}
+            </div>
+            <div className={styles.password_container}>
+              <input
+                type={showPassword.newPassword ? "text" : "password"}
+                placeholder="New Password"
+                name="newPassword"
+                onChange={handleChange}
+                value={data.newPassword}
+                className={styles.password_input}
+              />
+              {showPassword.newPassword ? (
+                <EyeSlash onClick={() => togglePasswordVisibility('newPassword')} className={styles.togglePassword} />
+              ) : (
+                <Eye onClick={() => togglePasswordVisibility('newPassword')} className={styles.togglePassword} />
+              )}
+            </div>
             {error && <div className={styles.error_msg}>{error}</div>}
             {success && <div className={styles.success_msg}>{success}</div>}
             <button type="submit" className={styles.save_btn}>

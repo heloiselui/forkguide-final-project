@@ -2,8 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
-import eyeShow from "../../assets/eye-show.svg";
-import eyeHide from "../../assets/eye-hide.svg";
+import { Eye, EyeSlash } from "phosphor-react";
 import logo from "../../assets/logo.svg";
 
 const Signup = () => {
@@ -95,12 +94,11 @@ const Signup = () => {
 								required
 								className={styles.input}
 							/>
-							<img
-								src={showPassword ? eyeHide : eyeShow}
-								alt="toggle password visibility"
-								onClick={togglePasswordVisibility}
-								className={styles.togglePassword}
-							/>
+							{showPassword ? (
+								<EyeSlash onClick={togglePasswordVisibility} className={styles.togglePassword} />
+							) : (
+								<Eye onClick={togglePasswordVisibility} className={styles.togglePassword} />
+							)}
 						</div>
 						<input
 							type="number"
