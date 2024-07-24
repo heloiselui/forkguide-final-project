@@ -33,12 +33,19 @@
 }
 
 .save_btn {
-  padding: 0.625rem 1.25rem;
-  border: none;
-  border-radius: 5px;
   background-color: var(--blue-700);
   color: var(--white);
+  border: none;
+  border-radius: 2.5rem;
+  padding: 0.625rem 2.5rem;
   cursor: pointer;
+  margin-right: 1.25rem;
+}
+
+.save_btn:hover {
+  background-color: var(--blue-600);
+  position: relative;
+  transition: background-color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;
 }
 
 .error_msg {
@@ -57,7 +64,6 @@
   position: relative;
   width: 100%;
   max-width: 400px;
-
 }
 
 .togglePassword {

@@ -43,7 +43,6 @@ const Login = () => {
 					<form className={styles.form_container} onSubmit={handleSubmit}>
 						<img className={styles.logo} src={logo} alt="Logo" />
 						<h1>Login</h1>
-
 						<input
 							type="email"
 							placeholder="Email"
@@ -52,6 +51,7 @@ const Login = () => {
 							value={data.email}
 							required
 							className={styles.input}
+							autoComplete="email"
 						/>
 						<div className={styles.password_container}>
 							<input
@@ -62,6 +62,7 @@ const Login = () => {
 								value={data.password}
 								required
 								className={styles.input}
+								autoComplete="current-password"
 							/>
 							{showPassword ? (
 								<EyeSlash onClick={togglePasswordVisibility} className={styles.togglePassword} />

@@ -65,6 +65,7 @@ const Signup = () => {
 							value={data.firstName}
 							required
 							className={styles.input}
+							autoComplete="given-name"
 						/>
 						<input
 							type="text"
@@ -74,6 +75,7 @@ const Signup = () => {
 							value={data.lastName}
 							required
 							className={styles.input}
+							autoComplete="family-name"
 						/>
 						<input
 							type="email"
@@ -83,6 +85,7 @@ const Signup = () => {
 							value={data.email}
 							required
 							className={styles.input}
+							autoComplete="email"
 						/>
 						<div className={styles.password_container}>
 							<input
@@ -93,6 +96,7 @@ const Signup = () => {
 								value={data.password}
 								required
 								className={styles.input}
+								autoComplete="new-password"
 							/>
 							{showPassword ? (
 								<EyeSlash onClick={togglePasswordVisibility} className={styles.togglePassword} />
@@ -108,6 +112,7 @@ const Signup = () => {
 							value={data.height}
 							required
 							className={styles.input}
+							autoComplete="height"
 						/>
 						<input
 							type="number"
@@ -117,6 +122,7 @@ const Signup = () => {
 							value={data.weight}
 							required
 							className={styles.input}
+							autoComplete="weight"
 						/>
 						<input
 							type="number"
@@ -126,6 +132,7 @@ const Signup = () => {
 							value={data.age}
 							required
 							className={styles.input}
+							autoComplete="age"
 						/>
 						<select
 							name="gender"
@@ -133,6 +140,7 @@ const Signup = () => {
 							value={data.gender}
 							required
 							className={styles.input}
+							autoComplete="sex"
 						>
 							<option value="" disabled>
 								Select Gender

@@ -30,7 +30,6 @@
 
 .meal_list_nutrients li {
   margin: 0 0.625rem;
-
 }
 
 .meal_list_meals {
@@ -57,7 +56,7 @@
 }
 
 .meal_list_meal h1 {
-  font-size: .25rem;
+  font-size: 1.25rem;
   margin: 0.625rem 0;
 }
 
