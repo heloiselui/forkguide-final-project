@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { SPOONACULAR_API_KEY } from "../../config";
 
 function Meal({ meal }) {
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
-    fetch(
-      `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=1b248edb58144f0f9911e72fcec66ce7&includeNutrition=false`
-    )
+    fetch(`https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=${SPOONACULAR_API_KEY}&includeNutrition=false`)
       .then((response) => response.json())
       .then((data) => {
         setImageUrl(data.image);
       })
       .catch(() => {
-        console.log("Error");
+        console.error("Error fetching recipe image");
       });
   }, [meal.id]);
 

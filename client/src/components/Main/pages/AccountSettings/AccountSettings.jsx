@@ -5,6 +5,7 @@ import Sidebar from "../../Sidebar";
 import styles from "./AccountSettings.module.css";
 import { Eye, EyeSlash } from "phosphor-react";
 import NutritionChatBot from "../../ChatBot";
+import { API_BASE_URL } from "../../../../config";
 
 const AccountSettings = () => {
   const [data, setData] = useState({
@@ -26,7 +27,7 @@ const AccountSettings = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const { data } = await axios.get("http://localhost:8080/api/users/me", {
+        const { data } = await axios.get(`${API_BASE_URL}/api/users/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setData({ ...data, password: "", newPassword: "" });
@@ -46,7 +47,7 @@ const AccountSettings = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
-      const { data: res } = await axios.put("http://localhost:8080/api/users/me", data, {
+      const { data: res } = await axios.put(`${API_BASE_URL}/api/users/me`, data, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSuccess(res.message);
@@ -91,6 +92,7 @@ const AccountSettings = () => {
               value={data.firstName}
               required
               className={styles.input}
+              autoComplete="given-name"
             />
             <input
               type="text"
@@ -100,6 +102,7 @@ const AccountSettings = () => {
               value={data.lastName}
               required
               className={styles.input}
+              autoComplete="family-name"
             />
             <input
               type="email"
@@ -109,6 +112,7 @@ const AccountSettings = () => {
               value={data.email}
               disabled
               className={styles.input}
+              autoComplete="username"
             />
             <input
               type="number"
@@ -117,6 +121,7 @@ const AccountSettings = () => {
               onChange={handleChange}
               value={data.height}
               className={styles.input}
+              autoComplete="height"
             />
             <input
               type="number"
@@ -125,6 +130,7 @@ const AccountSettings = () => {
               onChange={handleChange}
               value={data.weight}
               className={styles.input}
+              autoComplete="weight"
             />
             <input
               type="number"
@@ -133,12 +139,14 @@ const AccountSettings = () => {
               onChange={handleChange}
               value={data.age}
               className={styles.input}
+              autoComplete="age"
             />
             <select
               name="gender"
               onChange={handleChange}
               value={data.gender}
               className={styles.input}
+              autoComplete="sex"
             >
               <option value="">Select Gender</option>
               <option value="male">Male</option>
@@ -146,6 +154,7 @@ const AccountSettings = () => {
             </select>
             <div className={styles.password_container}>
               <input
+                autoComplete="current-password"
                 type={showPassword.password ? "text" : "password"}
                 placeholder="Current Password"
                 name="password"
@@ -161,6 +170,7 @@ const AccountSettings = () => {
             </div>
             <div className={styles.password_container}>
               <input
+                autoComplete="new-password"
                 type={showPassword.newPassword ? "text" : "password"}
                 placeholder="New Password"
                 name="newPassword"

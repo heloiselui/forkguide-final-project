@@ -3,23 +3,21 @@ import MealList from "./MealList";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import NutritionChatBot from "./ChatBot";
-
 import styles from "./MainApp.module.css";
+import { SPOONACULAR_API_KEY } from "../../config";
 
 function MainApp() {
 	const [mealData, setMealData] = useState(null);
 	const [calories, setCalories] = useState(2000);
 
 	const getMealData = () => {
-		fetch(
-			`https://api.spoonacular.com/mealplanner/generate?apiKey=1b248edb58144f0f9911e72fcec66ce7&timeFrame=day&targetCalories=${calories}`
-		)
+		fetch(`https://api.spoonacular.com/mealplanner/generate?apiKey=${SPOONACULAR_API_KEY}&timeFrame=day&targetCalories=${calories}`)
 			.then((response) => response.json())
 			.then((data) => {
 				setMealData(data);
 			})
 			.catch(() => {
-				console.log("error");
+				console.error("Error fetching meal data");
 			});
 	};
 

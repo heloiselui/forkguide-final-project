@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../Header';
 import Sidebar from '../../Sidebar';
 import axios from 'axios';
 import NutritionChatBot from "../../ChatBot";
-
 import styles from './RecipesLibrary.module.css';
 
 const RecipesLibrary = () => {
@@ -104,4 +103,3 @@ const RecipesLibrary = () => {
 }
 
 export default RecipesLibrary;
-
