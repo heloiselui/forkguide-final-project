@@ -15,7 +15,7 @@ const Signup = () => {
 		weight: "",
 		age: "",
 		gender: "",
-		weightGoal: "", // Adicionando o campo weightGoal
+		weightGoal: "",
 	});
 	const [error, setError] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
@@ -127,7 +127,7 @@ const Signup = () => {
 						/>
 						<input
 							type="number"
-							placeholder="Weight Goal (kg)" // Adicionando input para weightGoal
+							placeholder="Weight Goal (kg)"
 							name="weightGoal"
 							onChange={handleChange}
 							value={data.weightGoal}

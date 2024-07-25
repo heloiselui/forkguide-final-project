@@ -53,6 +53,7 @@ const AccountSettings = () => {
       });
       setSuccess(res.message);
       setError("");
+      window.location.reload();
     } catch (error) {
       if (
         error.response &&
