@@ -17,6 +17,20 @@
   flex-direction: column;
   align-items: center;
   margin-top: 2rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form_container label {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 .input,
@@ -27,7 +41,6 @@
   border-radius: 5px;
   margin-bottom: 1rem;
   width: 100%;
-  max-width: 400px;
   box-sizing: border-box;
   font-size: 1rem;
 }
@@ -40,18 +53,22 @@
   padding: 0.625rem 2.5rem;
   cursor: pointer;
   margin-right: 1.25rem;
+  transition: background-color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;
 }
 
 .save_btn:hover {
   background-color: var(--blue-600);
-  position: relative;
-  transition: background-color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;
 }
 
 .error_msg {
-  color: var(--red-500);
+  width: 370px;
+  padding: 0.625rem;
+  margin: 0.312rem 0;
+  font-size: 0.875rem;
+  background-color: var(--red-500);
+  color: var(--white);
+  border-radius: 5px;
   text-align: center;
-  margin-bottom: 1rem;
 }
 
 .success_msg {
@@ -63,15 +80,21 @@
 .password_container {
   position: relative;
   width: 100%;
-  max-width: 400px;
 }
 
 .togglePassword {
   position: absolute;
   right: 1.2rem;
-  top: 38%;
+  top: 35%;
   transform: translateY(-50%);
   cursor: pointer;
   width: 1.25rem;
   height: 1.25rem;
+}
+
+.label {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }

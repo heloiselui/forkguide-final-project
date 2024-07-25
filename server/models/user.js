@@ -6,12 +6,13 @@ const passwordComplexity = require("joi-password-complexity");
 const userSchema = new mongoose.Schema({
 	firstName: { type: String, required: true },
 	lastName: { type: String, required: true },
-	email: { type: String, required: true },
+	email: { type: String, required: true, unique: true },
 	password: { type: String, required: true },
 	height: { type: Number },
 	weight: { type: Number },
 	age: { type: Number },
-	gender: { type: String }
+	gender: { type: String },
+	weightGoal: { type: Number }
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -32,7 +33,8 @@ const validate = (data) => {
 		height: Joi.number().label("Height"),
 		weight: Joi.number().label("Weight"),
 		age: Joi.number().label("Age"),
-		gender: Joi.string().valid('male', 'female').label("Gender")
+		gender: Joi.string().valid('male', 'female').label("Gender"),
+		weightGoal: Joi.number().label("Weight Goal")
 	});
 	return schema.validate(data);
 };

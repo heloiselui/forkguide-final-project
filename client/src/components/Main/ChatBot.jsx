@@ -26,7 +26,7 @@ const NutritionChatBot = () => {
     const fetchUserData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const { data } = await axios.get("http://localhost:8080/api/users/me", {
+        const { data } = await axios.get(`${API_BASE_URL}/api/users/me`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -35,6 +35,7 @@ const NutritionChatBot = () => {
           const userHeight = data.height;
           const userAge = data.age;
           const userGender = data.gender;
+          const weightGoal = data.weightGoal;
 
           const chatbotSteps = [
             {
@@ -61,15 +62,23 @@ const NutritionChatBot = () => {
                 const height = userHeight;
                 const age = userAge;
                 const gender = userGender;
+                const goalWeight = weightGoal;
 
-                let bmi;
+                let bmr;
                 if (gender === 'male') {
-                  bmi = 10 * weight + 6.25 * height - 5 * age + 5;
+                  bmr = 10 * weight + 6.25 * height - 5 * age + 5;
                 } else {
-                  bmi = 10 * weight + 6.25 * height - 5 * age - 161;
+                  bmr = 10 * weight + 6.25 * height - 5 * age - 161;
                 }
 
-                return `Your recommended daily calories are: ${bmi.toFixed(2)} kcal`;
+                let calories;
+                if (goalWeight > weight) {
+                  calories = bmr + 500; // Aumento de peso
+                } else {
+                  calories = bmr - 500; // Perda de peso
+                }
+
+                return `To reach your goal of ${goalWeight}kg, you should consume approximately ${calories.toFixed(0)} kcal per day.`;
               },
               trigger: 'endOrCancel',
             },

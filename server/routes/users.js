@@ -9,10 +9,7 @@ router.post("/", async (req, res) => {
 		if (error) return res.status(400).send({ message: error.details[0].message });
 
 		const user = await User.findOne({ email: req.body.email });
-		if (user)
-			return res
-				.status(409)
-				.send({ message: "An account with this email address already exists." });
+		if (user) return res.status(409).send({ message: "An account with this email address already exists." });
 
 		const salt = await bcrypt.genSalt(Number(process.env.SALT));
 		const hashPassword = await bcrypt.hash(req.body.password, salt);
@@ -38,7 +35,7 @@ router.put("/me", auth, async (req, res) => {
 		const user = await User.findById(req.user._id);
 		if (!user) return res.status(404).send({ message: "User not found" });
 
-		const { firstName, lastName, height, weight, age, gender, password, newPassword } = req.body;
+		const { firstName, lastName, height, weight, age, gender, weightGoal, password, newPassword } = req.body;
 
 		user.firstName = firstName || user.firstName;
 		user.lastName = lastName || user.lastName;
@@ -46,6 +43,7 @@ router.put("/me", auth, async (req, res) => {
 		user.weight = weight || user.weight;
 		user.age = age || user.age;
 		user.gender = gender || user.gender;
+		user.weightGoal = weightGoal || user.weightGoal;
 
 		if (password && newPassword) {
 			const validPassword = await bcrypt.compare(password, user.password);

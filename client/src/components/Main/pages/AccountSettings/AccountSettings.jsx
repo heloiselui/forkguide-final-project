@@ -16,6 +16,7 @@ const AccountSettings = () => {
     weight: "",
     age: "",
     gender: "",
+    weightGoal: "",
     password: "",
     newPassword: ""
   });
@@ -84,6 +85,7 @@ const AccountSettings = () => {
         <div className={styles.content}>
           <h1>Account Settings</h1>
           <form className={styles.form_container} onSubmit={handleSubmit}>
+            <label htmlFor="firstName" className={styles.label}>First Name</label>
             <input
               type="text"
               placeholder="First Name"
@@ -94,6 +96,7 @@ const AccountSettings = () => {
               className={styles.input}
               autoComplete="given-name"
             />
+            <label htmlFor="lastName" className={styles.label}>Last Name</label>
             <input
               type="text"
               placeholder="Last Name"
@@ -104,6 +107,7 @@ const AccountSettings = () => {
               className={styles.input}
               autoComplete="family-name"
             />
+            <label htmlFor="email" className={styles.label}>Email</label>
             <input
               type="email"
               placeholder="Email"
@@ -114,6 +118,7 @@ const AccountSettings = () => {
               className={styles.input}
               autoComplete="username"
             />
+            <label htmlFor="height" className={styles.label}>Height (cm)</label>
             <input
               type="number"
               placeholder="Height (cm)"
@@ -123,6 +128,7 @@ const AccountSettings = () => {
               className={styles.input}
               autoComplete="height"
             />
+            <label htmlFor="weight" className={styles.label}>Weight (kg)</label>
             <input
               type="number"
               placeholder="Weight (kg)"
@@ -132,6 +138,17 @@ const AccountSettings = () => {
               className={styles.input}
               autoComplete="weight"
             />
+            <label htmlFor="weightGoal" className={styles.label}>Weight Goal (kg)</label>
+            <input
+              type="number"
+              placeholder="Weight Goal (kg)"
+              name="weightGoal"
+              onChange={handleChange}
+              value={data.weightGoal}
+              className={styles.input}
+              autoComplete="weight-goal"
+            />
+            <label htmlFor="age" className={styles.label}>Age</label>
             <input
               type="number"
               placeholder="Age"
@@ -141,6 +158,7 @@ const AccountSettings = () => {
               className={styles.input}
               autoComplete="age"
             />
+            <label htmlFor="gender" className={styles.label}>Gender</label>
             <select
               name="gender"
               onChange={handleChange}
@@ -152,6 +170,7 @@ const AccountSettings = () => {
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
+            <label htmlFor="password" className={styles.label}>Current Password</label>
             <div className={styles.password_container}>
               <input
                 autoComplete="current-password"
@@ -168,6 +187,7 @@ const AccountSettings = () => {
                 <Eye onClick={() => togglePasswordVisibility('password')} className={styles.togglePassword} />
               )}
             </div>
+            <label htmlFor="newPassword" className={styles.label}>New Password</label>
             <div className={styles.password_container}>
               <input
                 autoComplete="new-password"

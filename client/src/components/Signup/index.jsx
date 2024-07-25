@@ -15,6 +15,7 @@ const Signup = () => {
 		weight: "",
 		age: "",
 		gender: "",
+		weightGoal: "", // Adicionando o campo weightGoal
 	});
 	const [error, setError] = useState("");
 	const [showPassword, setShowPassword] = useState(false);
@@ -123,6 +124,16 @@ const Signup = () => {
 							required
 							className={styles.input}
 							autoComplete="weight"
+						/>
+						<input
+							type="number"
+							placeholder="Weight Goal (kg)" // Adicionando input para weightGoal
+							name="weightGoal"
+							onChange={handleChange}
+							value={data.weightGoal}
+							required
+							className={styles.input}
+							autoComplete="weight-goal"
 						/>
 						<input
 							type="number"
