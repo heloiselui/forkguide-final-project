@@ -73,9 +73,9 @@ const NutritionChatBot = () => {
 
                 let calories;
                 if (goalWeight > weight) {
-                  calories = bmr + 500; // Aumento de peso
+                  calories = bmr + 500;
                 } else {
-                  calories = bmr - 500; // Perda de peso
+                  calories = bmr - 500;
                 }
 
                 return `To reach your goal of ${goalWeight}kg, you should consume approximately ${calories.toFixed(0)} kcal per day.`;
