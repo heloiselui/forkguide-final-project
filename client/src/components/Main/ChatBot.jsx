@@ -110,7 +110,7 @@ const NutritionChatBot = () => {
             },
             {
               id: 'endMessage',
-              message: 'Okay, feel free to ask anything else!',
+              message: 'Okay, see you soon then!',
               end: true,
             },
           ];
