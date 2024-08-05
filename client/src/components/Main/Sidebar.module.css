@@ -18,7 +18,7 @@
 .sidebarNav a {
   border-radius: 5px;
   color: var(--white);
-  height: 3.125rem;
+  height: 2.3rem;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -30,12 +30,11 @@
 }
 
 #account {
-  margin-top: 21.75rem;
+  margin-top: 22rem;
 }
 
 .sidebarNav li:hover {
   background-color: var(--blue-600);
-  padding: 0.053rem;
   border-radius: 5px;
   position: relative;
   transition: background-color 0.3s ease, padding 0.3s ease, border-radius 0.3s ease;

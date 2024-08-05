@@ -52,17 +52,53 @@ const NutritionChatBot = () => {
             },
             {
               id: 'calories',
-              message: `Based on your profile, your weight is ${userWeight}kg, your height is ${userHeight}cm, your age is ${userAge} and your gender is ${userGender}. Calculating your daily calories...`,
-              trigger: 'calculateCalories',
+              message: `Based on your profile, your weight is ${userWeight}kg, your height is ${userHeight}cm, your age is ${userAge}, and your gender is ${userGender}.`,
+              trigger: 'askActivityLevel',
+            },
+            {
+              id: 'askActivityLevel',
+              message: 'Can you tell me your activity level?',
+              trigger: 'activityLevel',
+            },
+            {
+              id: 'activityLevel',
+              options: [
+                {
+                  value: 'sedentary',
+                  label: 'Sedentary (little or no exercise)',
+                  trigger: 'calculateCalories'
+                },
+                {
+                  value: 'lightly active',
+                  label: 'Lightly active (light exercise/sports 1-3 days/week)',
+                  trigger: 'calculateCalories'
+                },
+                {
+                  value: 'moderately active',
+                  label: 'Moderately active (moderate exercise/sports 3-5 days/week)',
+                  trigger: 'calculateCalories'
+                },
+                {
+                  value: 'very active',
+                  label: 'Very active (hard exercise/sports 6-7 days a week)',
+                  trigger: 'calculateCalories'
+                },
+                {
+                  value: 'super active',
+                  label: 'Super active (very hard exercise/physical job)',
+                  trigger: 'calculateCalories'
+                },
+              ],
             },
             {
               id: 'calculateCalories',
-              message: () => {
+              message: (options) => {
                 const weight = userWeight;
                 const height = userHeight;
                 const age = userAge;
                 const gender = userGender;
                 const goalWeight = weightGoal;
+                const activityLevel = options.previousValue;
 
                 let bmr;
                 if (gender === 'male') {
@@ -71,11 +107,40 @@ const NutritionChatBot = () => {
                   bmr = 10 * weight + 6.25 * height - 5 * age - 161;
                 }
 
+                let activityFactor;
+                switch (activityLevel) {
+                  case 'sedentary':
+                    activityFactor = 1.2;
+                    break;
+                  case 'lightly active':
+                    activityFactor = 1.375;
+                    break;
+                  case 'moderately active':
+                    activityFactor = 1.55;
+                    break;
+                  case 'very active':
+                    activityFactor = 1.725;
+                    break;
+                  case 'super active':
+                    activityFactor = 1.9;
+                    break;
+                  default:
+                    activityFactor = 1.2;
+                }
+
+                const maintenanceCalories = bmr * activityFactor;
                 let calories;
+
                 if (goalWeight > weight) {
-                  calories = bmr + 500;
+                  calories = maintenanceCalories + 500;
                 } else {
-                  calories = bmr - 500;
+                  const deficit = maintenanceCalories * 0.15;
+                  calories = maintenanceCalories - deficit;
+
+                  const minCalories = gender === 'male' ? 1500 : 1200;
+                  if (calories < minCalories) {
+                    calories = minCalories;
+                  }
                 }
 
                 return `To reach your goal of ${goalWeight}kg, you should consume approximately ${calories.toFixed(0)} kcal per day.`;
