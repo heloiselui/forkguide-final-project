@@ -88,6 +88,7 @@ const AccountSettings = () => {
           <form className={styles.form_container} onSubmit={handleSubmit}>
             <label htmlFor="firstName" className={styles.label}>First Name</label>
             <input
+              id="firstName"
               type="text"
               placeholder="First Name"
               name="firstName"
@@ -99,6 +100,7 @@ const AccountSettings = () => {
             />
             <label htmlFor="lastName" className={styles.label}>Last Name</label>
             <input
+              id="lastName"
               type="text"
               placeholder="Last Name"
               name="lastName"
@@ -110,6 +112,7 @@ const AccountSettings = () => {
             />
             <label htmlFor="email" className={styles.label}>Email</label>
             <input
+              id="email"
               type="email"
               placeholder="Email"
               name="email"
@@ -121,6 +124,7 @@ const AccountSettings = () => {
             />
             <label htmlFor="height" className={styles.label}>Height (cm)</label>
             <input
+              id="height"
               type="number"
               placeholder="Height (cm)"
               name="height"
@@ -131,6 +135,7 @@ const AccountSettings = () => {
             />
             <label htmlFor="weight" className={styles.label}>Weight (kg)</label>
             <input
+              id="weight"
               type="number"
               placeholder="Weight (kg)"
               name="weight"
@@ -141,6 +146,7 @@ const AccountSettings = () => {
             />
             <label htmlFor="weightGoal" className={styles.label}>Weight Goal (kg)</label>
             <input
+              id="weightGoal"
               type="number"
               placeholder="Weight Goal (kg)"
               name="weightGoal"
@@ -151,6 +157,7 @@ const AccountSettings = () => {
             />
             <label htmlFor="age" className={styles.label}>Age</label>
             <input
+              id="age"
               type="number"
               placeholder="Age"
               name="age"
@@ -161,6 +168,7 @@ const AccountSettings = () => {
             />
             <label htmlFor="gender" className={styles.label}>Gender</label>
             <select
+              id="gender"
               name="gender"
               onChange={handleChange}
               value={data.gender}
@@ -174,6 +182,7 @@ const AccountSettings = () => {
             <label htmlFor="password" className={styles.label}>Current Password</label>
             <div className={styles.password_container}>
               <input
+                id="password"
                 autoComplete="current-password"
                 type={showPassword.password ? "text" : "password"}
                 placeholder="Current Password"
@@ -191,6 +200,7 @@ const AccountSettings = () => {
             <label htmlFor="newPassword" className={styles.label}>New Password</label>
             <div className={styles.password_container}>
               <input
+                id="newPassword"
                 autoComplete="new-password"
                 type={showPassword.newPassword ? "text" : "password"}
                 placeholder="New Password"
