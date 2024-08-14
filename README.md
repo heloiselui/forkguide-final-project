@@ -2,6 +2,8 @@
 
 Welcome to **ForkGuide**, a modern web application designed to help users manage their daily meals, shopping lists, and health goals effortlessly. This project was developed as the final assignment for the completion of my Higher Diploma in Computer Science, specialising in Software Development, at the National College of Ireland. It showcases a full-stack application built with React on the frontend and Node.js with Express and MongoDB Atlas on the backend. This README will guide you through the project's features and structure.
 
+![image](https://github.com/user-attachments/assets/b0e767f2-47e3-4f7e-81bf-c90e14fdbb5a)
+
 ## Features
 
 - **User Authentication**: Secure login and registration system with JWT-based authentication.
